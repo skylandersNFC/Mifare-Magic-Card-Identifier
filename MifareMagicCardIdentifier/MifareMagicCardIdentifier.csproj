@@ -9,12 +9,6 @@
     <Product>$(MSBuildProjectName)</Product>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
-    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-  </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="GitInfo" Version="3.3.5" PrivateAssets="all" />
   </ItemGroup>
