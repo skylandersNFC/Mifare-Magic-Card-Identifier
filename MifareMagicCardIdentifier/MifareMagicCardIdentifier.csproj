@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <LangVersion>11</LangVersion>
+
+    <Title>$(MSBuildProjectName)</Title>
+    <Product>$(MSBuildProjectName)</Product>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GitInfo" Version="3.3.5" PrivateAssets="all" />
+  </ItemGroup>
+
+  <Target Name="PopulateInfo" DependsOnTargets="GitVersion" BeforeTargets="GetAssemblyVersion;GenerateNuspec;GetPackageContents">
+    <PropertyGroup>
+      <Version>$(GitSemVerMajor).$(GitSemVerMinor).$(GitSemVerPatch)</Version>
+      <InformationalVersion>$(Version)$(GitSemVerDashLabel)-$(GitBranch)+$(GitCommit) $(GitCommitDate)</InformationalVersion>
+    </PropertyGroup>
+  </Target>
+
+  <ItemGroup>
+    <ProjectReference Include="..\LibnfcSharp\LibnfcSharp.Mifare\LibnfcSharp.Mifare.csproj" />
+  </ItemGroup>
+
+</Project>
