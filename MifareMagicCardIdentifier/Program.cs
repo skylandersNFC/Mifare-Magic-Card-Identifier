@@ -12,6 +12,13 @@ namespace MifareMagicCardIdentifier
 
         static void Main(string[] args)
         {
+            Console.Title = $"Mifare Magic Card Identifier v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}{ThisAssembly.Git.SemVer.DashLabel} [{ThisAssembly.Git.Commit}]";
+
+            Console.WriteLine($$"""
+                Place a card on the reader...
+
+                """);
+
             do
             {
                 using (var context = new NfcContext())
