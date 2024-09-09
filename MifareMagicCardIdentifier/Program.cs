@@ -21,22 +21,24 @@ namespace MifareMagicCardIdentifier
 
             do
             {
-                using (var context = new NfcContext())
-                using (var device = context.OpenDevice())
+                try
                 {
-                    var mfc = new MifareClassic(device);
-                    mfc.RegisterKeyAProviderCallback((_, _) => DEFAULT_KEY);
-                    mfc.InitialDevice();
-                    mfc.WaitForCard();
-                    mfc.IdentifyMagicCardType();
+                    using (var context = new NfcContext())
+                    using (var device = context.OpenDevice())
+                    {
+                        var mfc = new MifareClassic(device);
+                        mfc.RegisterKeyAProviderCallback((_, _) => DEFAULT_KEY);
+                        mfc.InitialDevice();
+                        mfc.WaitForCard();
+                        mfc.IdentifyMagicCardType();
 
-                    ManufacturerInfo manufacturerInfo;
-                    mfc.ReadManufacturerInfo(out manufacturerInfo);
+                        ManufacturerInfo manufacturerInfo;
+                        mfc.ReadManufacturerInfo(out manufacturerInfo);
 
-                    byte[] accessConditions;
-                    var hasUnlockedAccessConditions = mfc.HasUnlockedAccessConditions(0, out accessConditions);
+                        byte[] accessConditions;
+                        var hasUnlockedAccessConditions = mfc.HasUnlockedAccessConditions(0, out accessConditions);
 
-                    Console.WriteLine($$"""
+                        Console.WriteLine($$"""
                         UID: {{Convert.ToHexString(mfc.Uid)}}
                         BCC: {{Convert.ToHexString(new[] { manufacturerInfo.Bcc })}}
                         SAK: {{Convert.ToHexString(new[] { mfc.Sak })}} ({{Convert.ToHexString(new[] { manufacturerInfo.Sak })}})
@@ -50,6 +52,11 @@ namespace MifareMagicCardIdentifier
 
 
                         """);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.GetType()}: {ex.Message}");
                 }
             }
             while (Console.ReadKey().Key == ConsoleKey.Enter);
