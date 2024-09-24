@@ -51,6 +51,7 @@ jobs:
         path: |
           *.exe
           *.dll
+          libnfc.conf
 
     # Zip release
     - name: Zip release
