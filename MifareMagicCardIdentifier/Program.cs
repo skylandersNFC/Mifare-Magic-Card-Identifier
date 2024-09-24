@@ -14,11 +14,6 @@ namespace MifareMagicCardIdentifier
         {
             Console.Title = $"Mifare Magic Card Identifier v{ThisAssembly.Git.SemVer.Major}.{ThisAssembly.Git.SemVer.Minor}.{ThisAssembly.Git.SemVer.Patch}{ThisAssembly.Git.SemVer.DashLabel} [{ThisAssembly.Git.Commit}]";
 
-            Console.WriteLine($$"""
-                Place a card on the reader...
-
-                """);
-
             do
             {
                 try
@@ -26,6 +21,9 @@ namespace MifareMagicCardIdentifier
                     using (var context = new NfcContext())
                     using (var device = context.OpenDevice())
                     {
+                        Console.Clear();
+                        Console.WriteLine("Place a card on the reader...");
+
                         var mfc = new MifareClassic(device);
                         mfc.RegisterKeyAProviderCallback((_, _) => DEFAULT_KEY);
                         mfc.InitialDevice();
@@ -38,6 +36,7 @@ namespace MifareMagicCardIdentifier
                         byte[] accessConditions;
                         var hasUnlockedAccessConditions = mfc.HasUnlockedAccessConditions(0, out accessConditions);
 
+                        Console.Clear();
                         Console.WriteLine($$"""
                         UID: {{Convert.ToHexString(mfc.Uid)}}
                         BCC: {{Convert.ToHexString(new[] { manufacturerInfo.Bcc })}}
@@ -56,6 +55,7 @@ namespace MifareMagicCardIdentifier
                 }
                 catch (Exception ex)
                 {
+                    Console.Clear();
                     Console.WriteLine($"{ex.GetType()}: {ex.Message}");
                 }
             }
