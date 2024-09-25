@@ -1,10 +1,10 @@
-# MifareMagicCardIdentifier (MMCI)
+# Mifare Magic Card Identifier (MMCI)
 
 ## Overview
 
-**MifareMagicCardIdentifier (MMCI)** supports **ACR122U** and **PN532 V2.0** NFC Reader/Writer.
+**Mifare Magic Card Identifier (MMCI)** supports **[ACR122U](https://skylandersnfc.github.io/Docs/Skylanders_Buying_List/Skylanders_NFC_Devices/#acr122u-all-skylanders)** and **[PN532 V2.0](https://skylandersnfc.github.io/Docs/Skylanders_Buying_List/Skylanders_NFC_Devices/#pn532-v20-all-skylanders)** NFC devices.
 
-It retrieves and displays the **UID**, **BCC**, **SAK**, **ATQA** and **ATS** of your Mifare Classic 1k (Magic) cards.
+It retrieves and displays the **UID**, **BCC**, **SAK**, **ATQA** and **ATS** of your Mifare Classic 1k cards.
 
 It also identifies the card's generation:
 - **Gen1** UID LOCKED
@@ -16,11 +16,11 @@ and indicates the state of the **access conditions** for Sector 0 (**locked** or
 
 ## Usage
 
-1. Download latest release of **[MifareMagicCardIdentifier](https://github.com/MirakelDev/MifareMagicCardIdentifier/releases/latest)** and **extract it**.
-2. Connect the **ACR122U** or **PN532 V2.0** NFC Reader/Writer.
-3. Place a **Mifare Classic 1k (Magic) card** onto the reader.
-4. Run the "**MifareMagicCardIdentifier.exe**" program to get the output information for this card.
-5. To scan a different card, simply place a **Mifare Classic 1k (Magic) card** onto the reader and press **Enter** to retrieve the new data.
+1. Download the **correct** **[Mifare-Magic-Card-Identifier](https://github.com/skylandersNFC/Mifare-Magic-Card-Identifier/releases)** archive for your NFC device and **extract it**.
+2. Connect the **[ACR122U](https://skylandersnfc.github.io/Docs/Skylanders_Buying_List/Skylanders_NFC_Devices/#acr122u-all-skylanders)** or **[PN532 V2.0](https://skylandersnfc.github.io/Docs/Skylanders_Buying_List/Skylanders_NFC_Devices/#pn532-v20-all-skylanders)** NFC device.
+3. Place a **Mifare S50 1k card** onto the reader.
+4. Run the "**Mifare-Magic-Card-Identifier-XXXX.exe**" program to get the output information for this tag.
+5. To scan a different tag, simply place the **new Mifare S50 1k card** on the reader and press **Enter** to retrieve the new data.
 
 ## Screenshots
 
